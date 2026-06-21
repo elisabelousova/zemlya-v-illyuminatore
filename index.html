@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#e9eefc" />
+    <title>Земля в иллюминаторе</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css?v=8" />
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="brand-kicker">Земля в иллюминаторе</p>
+          <h1>Куда <span class="accent">летим?</span></h1>
+        </div>
+        <button class="icon-button" id="openSearch" aria-label="Открыть поиск" title="Поиск">
+          <i data-lucide="search"></i>
+        </button>
+      </header>
+
+      <main id="app" aria-live="polite"></main>
+
+      <nav class="bottom-nav" aria-label="Основная навигация">
+        <button class="nav-item is-active" data-nav="home">
+          <i data-lucide="compass"></i>
+          <span>Главная</span>
+        </button>
+        <button class="nav-item" data-nav="saved">
+          <i data-lucide="bookmark"></i>
+          <span>Сохранённые</span>
+        </button>
+      </nav>
+    </div>
+
+    <div class="search-overlay" id="searchOverlay" hidden>
+      <div class="search-header">
+        <button class="icon-button" id="closeSearch" aria-label="Закрыть поиск" title="Назад">
+          <i data-lucide="arrow-left"></i>
+        </button>
+        <label class="search-field">
+          <i data-lucide="search"></i>
+          <input id="searchInput" type="search" placeholder="Страна, виза или лайфхак" autocomplete="off" />
+        </label>
+      </div>
+      <div class="search-results" id="searchResults"></div>
+    </div>
+
+    <script src="data.js?v=8"></script>
+    <script src="app.js?v=8"></script>
+  </body>
+</html>
