@@ -325,8 +325,12 @@ function openPost(postId) {
   const post = data.posts.find((item) => item.id === postId);
   if (!post) return;
   track("post_opened", { post_id: postId, section_id: post.section, source_screen: currentView });
-  if (tg?.openTelegramLink && tg.initData) tg.openTelegramLink(post.url);
-  else window.open(post.url, "_blank", "noopener,noreferrer");
+  if (tg?.openTelegramLink && tg.initData) {
+    tg.openTelegramLink(post.url);
+    tg.close();
+  } else {
+    window.open(post.url, "_blank", "noopener,noreferrer");
+  }
 }
 
 function renderSectionWithFilter(sectionId, filter) {
