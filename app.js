@@ -195,9 +195,13 @@ function renderSection(sectionId) {
   const section = sectionById(sectionId);
   const posts = visiblePosts().filter((post) => postInSection(post, sectionId));
   track("section_opened", { section_id: sectionId });
+  const rawCountries = [...new Set(posts.flatMap((post) => [post.country, ...(post.countries || [])]).filter(Boolean))];
+  const pinnedCountry = "Полезное";
   const countries = [
     "Все",
-    ...new Set(posts.flatMap((post) => [post.country, ...(post.countries || [])]).filter(Boolean)),
+    ...(rawCountries.includes(pinnedCountry)
+      ? [pinnedCountry, ...rawCountries.filter((country) => country !== pinnedCountry)]
+      : rawCountries),
   ];
 
   app.innerHTML = `
